@@ -1,105 +1,107 @@
 package com.example.apiweather
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
+
+    val wikiApiServe by lazy {
+        WeatherApiService.create()
+    }
+    var disposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        imageView.setImageResource(R.drawable.ic_wi_day_cloudy)
+        //iconView.setImageResource(R.drawable.ic_wi_day_cloudy)
         imageViewThermometer.setImageResource(R.drawable.ic_wi_thermometer)
         imageViewDegrees.setImageResource(R.drawable.ic_wi_degrees)
         imageViewBarometer.setImageResource(R.drawable.ic_wi_barometer)
 
-        //fetchJson()
-
-    }
-}
-
-/*
-    fun fetchJson() {
-
-        val view:TextView = findViewById(R.id.textDateView)
-
-        var city:String = "Gliwice"
-
-        val API_KEY = "4d9c1e57310a8c80e27c9d8b1e80c77b"
-
-        //https://api.openweathermap.org/data/2.5/weather?q=Gliwice,pl&APPID=4d9c1e57310a8c80e27c9d8b1e80c77b
-        val url =
-            "https://api.openweathermap.org/data/2.5/weather?q=$city&APPID=$API_KEY"
-
-        val request = Request.Builder().url(url).build()
-
-        val client = OkHttpClient()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                println("Nie udało sie")
+        citySearch.setOnClickListener {
+            if (inputCity.text.toString().isNotEmpty()){
+                beginSearch(inputCity.text.toString())
+                val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(citySearch.windowToken, 0)
             }
+        }
+    }
 
-            override fun onResponse(call: Call, response: Response) {
-                val body = response?.body?.string()
-                println(body)
 
-                val gson = GsonBuilder().create()
-
-                val homeWeather = gson.fromJson(body, WeatherDataClass::class.java)
-                println(homeWeather)
-
-                val homeWeather2 = gson.fromJson(body, Main::class.java)
-                println(homeWeather2)
-
-                val homeWeather3 = gson.fromJson(body, Sys::class.java)
-                println(homeWeather3)
-
-                checkButton.setOnClickListener {
-                    textTemperatureView.text = homeWeather.temp.toString()
-                    textPressureView.text = homeWeather2.pressure.toString()
-                    textSunriseView.text = homeWeather.sunrise.toString()
-                    textSunsetView.text = homeWeather.sunset.toString()
-                    textTimeView.text = homeWeather.timezone.toString()
-                    textDescriptionView.text = homeWeather.description
+    private fun beginSearch(searchString: String) {
+        disposable = wikiApiServe.hitCountCheck(
+            searchString,
+            "4d9c1e57310a8c80e27c9d8b1e80c77b",
+            "metric",
+            "pl"
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { result ->
+                val data = "${changeDate(
+                    (result.dt.toLong() + result.timezone.toLong()) * 1000,
+                    "dd.MM.yyyy"
+                )}"
+                val time = "${changeDate(
+                    (result.dt.toLong() + result.timezone.toLong()) * 1000,
+                    "mm:ss"
+                )}"
+                val sunriseTime =
+                    "Sunrise: ${changeTime((result.sys.sunrise.toLong() + result.timezone.toLong()) * 1000L)}"
+                val sunsetTime =
+                    "Sunset: ${changeTime((result.sys.sunset.toLong() + result.timezone.toLong()) * 1000L)}"
+                if (result.cod == "200") {
+                    textViewThemperature.text = result.main.temp
+                    textViewBarometer.text = result.main.pressure
+                    textViewDescription.text = result.weather[0].description
+                    textViewTime.text = data + time
+                    if (result.weather[0].main == "Clear") {
+                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
+                    } else if (result.weather[0].main == "Rainy") {
+                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
+                    } else if (result.weather[0].main == "Windy") {
+                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
+                    } else if (result.weather[0].main == "Clouds") {
+                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
+                    }
+                    textViewSunrise.text = sunriseTime
+                    textViewSunset.text = sunsetTime
                 }
             }
-        })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
+    }
+
+    fun changeDate(miliSeconds: Long, dateFormat: String?): String? {
+        val formatter = SimpleDateFormat(dateFormat)
+        val calendar = Calendar.getInstance()
+
+        calendar.timeInMillis = miliSeconds
+
+        return formatter.format(calendar.getTime())
+    }
+
+    fun changeTime(miliSeconds: Long): String? {
+        val time = String.format (
+            "%02d:%02d",
+            TimeUnit.MILLISECONDS.toHours(miliSeconds) % 24,
+            TimeUnit.MILLISECONDS.toMinutes(miliSeconds) % 60
+        )
+        return time
     }
 }
 
 
-// data -> nie ma
-
-data class WeatherDataClass(
-    val name: String, //nazwa miejscowosci, mozliwosc wpisania w pole
-    val weather: List<Weather>, //potrzebne -> description, ikona
-    val timezone: Int,
-    val pressure: Int, //cisnienie
-    val temp: Double, // temperatura
-    val sunrise: Int, //wschod
-    val sunset: Int, //zachod
-    val description: String
-)
-
-data class Main(
-    val pressure: Int, //cisnienie
-    val temp: Double // temperatura
-)
-
-data class Sys(
-    val sunrise: Int, //wschod
-    val sunset: Int //zachod
-)
-
-data class Weather(
-    val description: String,
-    val icon: String,
-    val id: Int,
-    val main: String
-)
-
-
-*/
