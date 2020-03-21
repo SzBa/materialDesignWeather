@@ -1,146 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Ikony zostały pobrane z http://erikflowers.github.io/weather-icons/ -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#0642DB"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="371dp">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="67dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="36dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBarometer"
+        app:layout_constraintVertical_bias="0.13999999"
+        app:srcCompat="@drawable/ic_wi_day_cloudy" />
 
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:text="clear sky"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBarometer" />
 
-    <EditText
-        android:id="@+id/cityName"
+    <ImageView
+        android:id="@+id/imageViewThermometer"
+        android:layout_width="85dp"
+        android:layout_height="82dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56"
+        tools:srcCompat="@drawable/ic_wi_thermometer" />
+
+    <TextView
+        android:id="@+id/textViewThemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:ems="10"
-        android:hint="Write your city"
-        android:inputType="text"
+        android:gravity="center"
+        android:text="22.5"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.691"
+        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <ImageView
+        android:id="@+id/imageViewDegrees"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58000004"
+        app:srcCompat="@drawable/ic_wi_degrees" />
+
+    <ImageView
+        android:id="@+id/imageViewBarometer"
+        android:layout_width="76dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="44dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
+        tools:srcCompat="@drawable/ic_wi_barometer" />
+
+    <TextView
+        android:id="@+id/textViewBarometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="1000 hPa"
+        android:textAlignment="textStart"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewThemperature" />
+
+    <ImageView
+        android:id="@+id/imageViewSunrise"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112"
+        app:srcCompat="@drawable/ic_wi_sunrise" />
+
+    <TextView
+        android:id="@+id/textViewSunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="05:20"
+        android:textAlignment="textStart"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.213"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <ImageView
+        android:id="@+id/imageViewSunset"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112"
+        app:srcCompat="@drawable/ic_wi_sunset" />
+
+    <TextView
+        android:id="@+id/textViewSunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="21:20"
+        android:textAlignment="textStart"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <ImageView
+        android:id="@+id/imageViewTime2"
+        android:layout_width="37dp"
+        android:layout_height="35dp"
+        android:tint="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.418"
+        app:srcCompat="@drawable/ic_wi_time_2" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="17:25 16.03.2020"
+        android:textAlignment="textStart"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.414" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:gravity="center"
+        android:hint="City"
+        android:inputType="text"
+        android:textColor="@color/design_default_color_background"
+        android:textColorHighlight="@color/design_default_color_background"
+        android:textColorHint="@color/design_default_color_background"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/checkButton"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Check"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityName"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/cityIcon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/city_icon_64"
-        app:layout_constraintEnd_toStartOf="@+id/cityName"
-        app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textTemperatureView"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="52dp"
-        android:text="Temperatura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkButton" />
-
-    <Button
-        android:id="@+id/weatherIcon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="right"
-        android:layout_marginStart="236dp"
-        android:layout_marginLeft="236dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/sun_icon_64"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkButton"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textPressureView"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="28dp"
-        android:text="Cisnienie"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTemperatureView" />
-
-
-    <TextView
-        android:id="@+id/textSunriseView"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:text="Wschod"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPressureView" />
-
-    <TextView
-        android:id="@+id/textSunsetView"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="32dp"
-        android:text="Zachod"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSunriseView" />
-
-    <TextView
-        android:id="@+id/textTimeView"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="32dp"
-        android:text="Czas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherIcon" />
-
-    <TextView
-        android:id="@+id/textDateView"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:text="Data"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTimeView" />
-
-    <TextView
-        android:id="@+id/textDescriptionView"
-        android:layout_width="400dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="40dp"
-        android:text="Opis"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDateView" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
