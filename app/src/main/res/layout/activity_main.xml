@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Ikony zostały pobrane z http://erikflowers.github.io/weather-icons/ -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Background"
@@ -10,103 +10,110 @@
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="371dp">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/iconView"
-        android:layout_width="67dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="36dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBarometer"
-        app:layout_constraintVertical_bias="0.13999999"
-        app:srcCompat="@drawable/ic_wi_day_cloudy" />
 
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:text="clear sky"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.776"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBarometer" />
+        <ImageView
+            android:id="@+id/iconView"
+            android:layout_width="67dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="36dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBarometer"
+            app:layout_constraintVertical_bias="0.13999999"
+            app:srcCompat="@drawable/ic_wi_day_cloudy" />
 
-    <ImageView
-        android:id="@+id/imageViewThermometer"
-        android:layout_width="85dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="212dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSunrise"
-        tools:srcCompat="@drawable/ic_wi_thermometer" />
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="24dp"
+            android:text="clear sky"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBarometer" />
 
-    <TextView
-        android:id="@+id/textViewThemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="22.5"
-        android:textAlignment="center"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="60dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/citySearch"
-        app:layout_constraintVertical_bias="0.149" />
+        <ImageView
+            android:id="@+id/imageViewThermometer"
+            android:layout_width="85dp"
+            android:layout_height="82dp"
+            android:layout_marginTop="210dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSunrise"
+            tools:srcCompat="@drawable/ic_wi_thermometer" />
 
-    <ImageView
-        android:id="@+id/imageViewDegrees"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="176dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.811"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSunset"
-        app:srcCompat="@drawable/ic_wi_degrees" />
+        <TextView
+            android:id="@+id/textViewThemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="22.5"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="64dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/citySearch"
+            app:layout_constraintVertical_bias="0.07999998" />
 
-    <ImageView
-        android:id="@+id/imageViewBarometer"
-        android:layout_width="76dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="116dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
-        tools:srcCompat="@drawable/ic_wi_barometer" />
+        <ImageView
+            android:id="@+id/imageViewDegrees"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="180dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.86"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSunset"
+            app:srcCompat="@drawable/ic_wi_degrees" />
 
-    <TextView
-        android:id="@+id/textViewBarometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:gravity="center"
-        android:text="1000 hPa"
-        android:textAlignment="textStart"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewThemperature" />
+        <ImageView
+            android:id="@+id/imageViewBarometer"
+            android:layout_width="76dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="110dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.31"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
+            tools:srcCompat="@drawable/ic_wi_barometer" />
+
+        <TextView
+            android:id="@+id/textViewBarometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="136dp"
+            android:gravity="center"
+            android:text="1000 hPa"
+            android:textAlignment="textStart"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewThemperature" />
 
     <ImageView
         android:id="@+id/imageViewSunrise"
@@ -137,96 +144,96 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.167" />
 
-    <ImageView
-        android:id="@+id/imageViewSunset"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.786"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055"
-        app:srcCompat="@drawable/ic_wi_sunset" />
+        <ImageView
+            android:id="@+id/imageViewSunset"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055"
+            app:srcCompat="@drawable/ic_wi_sunset" />
 
-    <TextView
-        android:id="@+id/textViewSunset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="21:20"
-        android:textAlignment="textStart"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168" />
+        <TextView
+            android:id="@+id/textViewSunset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="21:20"
+            android:textAlignment="textStart"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.79"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.168" />
 
 
-    <ImageView
-        android:id="@+id/imageViewTime2"
-        android:layout_width="37dp"
-        android:layout_height="35dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
-        app:layout_constraintVertical_bias="0.222"
-        app:srcCompat="@drawable/ic_wi_time_2" />
+        <ImageView
+            android:id="@+id/imageViewTime2"
+            android:layout_width="37dp"
+            android:layout_height="35dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.26"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
+            app:layout_constraintVertical_bias="0.110000014"
+            app:srcCompat="@drawable/ic_wi_time_2" />
 
-    <TextView
-        android:id="@+id/textViewTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="17:25 16.03.2020"
-        android:textAlignment="textStart"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/citySearch"
-        app:layout_constraintVertical_bias="0.515" />
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="17:25 16.03.2020"
+            android:textAlignment="textStart"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.612"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/citySearch"
+            app:layout_constraintVertical_bias="0.41000003" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputCity"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:gravity="center"
-        android:hint="City"
-        android:inputType="text"
-        android:textColor="@color/design_default_color_background"
-        android:textColorHighlight="@color/design_default_color_background"
-        android:textColorHint="@color/design_default_color_background"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputCity"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:gravity="center"
+            android:hint="City"
+            android:inputType="text"
+            android:textColor="@color/design_default_color_background"
+            android:textColorHighlight="@color/design_default_color_background"
+            android:textColorHint="@color/design_default_color_background"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/citySearch"
-        android:background="#0202AA"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:text="Search"
-        android:textColor="@color/design_default_color_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCity" />
+        <Button
+            android:id="@+id/citySearch"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:background="#0202AA"
+            android:text="Search"
+            android:textColor="@color/design_default_color_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputCity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
