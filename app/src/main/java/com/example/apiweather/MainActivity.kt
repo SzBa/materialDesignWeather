@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
-    val wikiApiServe by lazy {
+    private val wikiApiServe by lazy {
         WeatherApiService.create()
     }
     var disposable: Disposable? = null
@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //iconView.setImageResource(R.drawable.ic_wi_day_cloudy)
         imageViewThermometer.setImageResource(R.drawable.ic_wi_thermometer)
         imageViewDegrees.setImageResource(R.drawable.ic_wi_degrees)
         imageViewBarometer.setImageResource(R.drawable.ic_wi_barometer)
@@ -48,34 +47,29 @@ class MainActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { result ->
-                val data = "${changeDate(
-                    (result.dt.toLong() + result.timezone.toLong()) * 1000,
-                    "dd.MM.yyyy"
-                )}"
-                val time = "${changeDate(
-                    (result.dt.toLong() + result.timezone.toLong()) * 1000,
-                    "mm:ss"
-                )}"
+                val data = changeDate(
+                    (result.dt.toLong() + result.timezone.toLong()) * 1000L
+                )
+                val time = changeTime(
+                    (result.dt.toLong() + result.timezone.toLong()) * 1000L
+                )
                 val sunriseTime =
-                    "Sunrise: ${changeTime((result.sys.sunrise.toLong() + result.timezone.toLong()) * 1000L)}"
+                    changeTime((result.sys.sunrise.toLong() + result.timezone.toLong()) * 1000L)
+                    textViewSunrise.text = sunriseTime
                 val sunsetTime =
-                    "Sunset: ${changeTime((result.sys.sunset.toLong() + result.timezone.toLong()) * 1000L)}"
+                    changeTime((result.sys.sunset.toLong() + result.timezone.toLong()) * 1000L)
+                    textViewSunset.text = sunsetTime
                 if (result.cod == "200") {
                     textViewThemperature.text = result.main.temp
-                    textViewBarometer.text = result.main.pressure
+                    textViewBarometer.text = "${result.main.pressure} hPa"
                     textViewDescription.text = result.weather[0].description
-                    textViewTime.text = data + time
-                    if (result.weather[0].main == "Clear") {
-                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
-                    } else if (result.weather[0].main == "Rainy") {
-                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
-                    } else if (result.weather[0].main == "Windy") {
-                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
-                    } else if (result.weather[0].main == "Clouds") {
-                        iconView.setBackgroundResource(R.drawable.ic_wi_day_cloudy)
+                    textViewTime.text = time + data
+                    when {
+                        result.weather[0].main == "Clear" -> iconView.setImageResource(R.drawable.ic_wi_day_sunny)
+                        result.weather[0].main == "Snow" -> iconView.setImageResource(R.drawable.ic_wi_snow)
+                        result.weather[0].main == "Windy" -> iconView.setImageResource(R.drawable.ic_wi_windy)
+                        result.weather[0].main == "Rain" -> iconView.setImageResource(R.drawable.ic_wi_day_rain)
                     }
-                    textViewSunrise.text = sunriseTime
-                    textViewSunset.text = sunsetTime
                 }
             }
     }
@@ -85,13 +79,12 @@ class MainActivity : AppCompatActivity() {
         disposable?.dispose()
     }
 
-    fun changeDate(miliSeconds: Long, dateFormat: String?): String? {
-        val formatter = SimpleDateFormat(dateFormat)
+    fun changeDate(miliSeconds: Long): String {
+        val formatter = SimpleDateFormat(" dd MMM yyyy", Locale.US)
         val calendar = Calendar.getInstance()
 
         calendar.timeInMillis = miliSeconds
-
-        return formatter.format(calendar.getTime())
+        return formatter.format(calendar.time)
     }
 
     fun changeTime(miliSeconds: Long): String? {
@@ -103,5 +96,3 @@ class MainActivity : AppCompatActivity() {
         return time
     }
 }
-
-
