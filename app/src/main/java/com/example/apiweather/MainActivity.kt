@@ -14,7 +14,6 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
-
     private val wikiApiServe by lazy {
         WeatherApiService.create()
     }
@@ -33,14 +32,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun beginSearch(searchString: String) {
         disposable = wikiApiServe.hitCountCheck(
             searchString,
             "4d9c1e57310a8c80e27c9d8b1e80c77b",
             "metric",
             "pl"
-        )
+            )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { result ->
@@ -58,14 +56,13 @@ class MainActivity : AppCompatActivity() {
                     changeTime((result.sys.sunset.toLong() + result.timezone.toLong()) * 1000L)
                     textViewSunset.text = sunsetTime
                 if (result.cod == "200") {
-
                     imageViewThermometer.setImageResource(R.drawable.ic_wi_thermometer)
                     imageViewDegrees.setImageResource(R.drawable.ic_wi_degrees)
                     imageViewBarometer.setImageResource(R.drawable.ic_wi_barometer)
                     imageViewTime2.setImageResource(R.drawable.ic_wi_time_2)
                     imageViewSunrise.setImageResource(R.drawable.ic_wi_sunrise)
                     imageViewSunset.setImageResource(R.drawable.ic_wi_sunset)
-
+                    iconView.setImageResource(R.drawable.ic_wi_day_sunny)
 
                     textViewThemperature.text = "%.1f".format(temp)
                     textViewBarometer.text = "${result.main.pressure} hPa"
@@ -76,6 +73,7 @@ class MainActivity : AppCompatActivity() {
                         result.weather[0].main == "Snow" -> iconView.setImageResource(R.drawable.ic_wi_snow)
                         result.weather[0].main == "Windy" -> iconView.setImageResource(R.drawable.ic_wi_windy)
                         result.weather[0].main == "Rain" -> iconView.setImageResource(R.drawable.ic_wi_day_rain)
+                        result.weather[0].main == "Clouds" -> iconView.setImageResource(R.drawable.ic_wi_cloud)
                     }
                 }
             }
@@ -102,6 +100,4 @@ class MainActivity : AppCompatActivity() {
         )
         return time
     }
-
-    fun Double.format(digits: Int) = "%.${digits}f".format(this)
 }
