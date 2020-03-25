@@ -30,15 +30,13 @@
             app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewBarometer"
-            app:layout_constraintVertical_bias="0.13999999"
-            app:srcCompat="@drawable/ic_wi_day_cloudy" />
+            app:layout_constraintVertical_bias="0.13999999" />
 
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="150dp"
             android:layout_height="80dp"
-            android:layout_marginTop="24dp"
-            android:text="clear sky"
+            android:layout_marginTop="26dp"
             android:textColor="@color/design_default_color_background"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,8 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSunrise"
-            tools:srcCompat="@drawable/ic_wi_thermometer" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewSunrise" />
 
         <TextView
             android:id="@+id/textViewThemperature"
@@ -64,7 +61,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="22.5"
             android:textAlignment="center"
             android:textColor="@color/design_default_color_background"
             android:textSize="64dp"
@@ -85,28 +81,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.86"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSunset"
-            app:srcCompat="@drawable/ic_wi_degrees" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewSunset" />
 
         <ImageView
             android:id="@+id/imageViewBarometer"
             android:layout_width="76dp"
             android:layout_height="56dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="100dp"
             android:tint="@color/design_default_color_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.31"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
-            tools:srcCompat="@drawable/ic_wi_barometer" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer" />
 
         <TextView
             android:id="@+id/textViewBarometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
+            android:layout_marginTop="126dp"
             android:gravity="center"
-            android:text="1000 hPa"
             android:textAlignment="textStart"
             android:textColor="@color/design_default_color_background"
             android:textSize="20dp"
@@ -115,34 +108,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewThemperature" />
 
-    <ImageView
-        android:id="@+id/imageViewSunrise"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:tint="@color/design_default_color_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055"
-        app:srcCompat="@drawable/ic_wi_sunrise" />
+        <ImageView
+            android:id="@+id/imageViewSunrise"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:tint="@color/design_default_color_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055" />
 
-    <TextView
-        android:id="@+id/textViewSunrise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="05:20"
-        android:textAlignment="textStart"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
+        <TextView
+            android:id="@+id/textViewSunrise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="textStart"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.167" />
 
         <ImageView
             android:id="@+id/imageViewSunset"
@@ -154,15 +145,13 @@
             app:layout_constraintHorizontal_bias="0.82"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.055"
-            app:srcCompat="@drawable/ic_wi_sunset" />
+            app:layout_constraintVertical_bias="0.055" />
 
         <TextView
             android:id="@+id/textViewSunset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="21:20"
             android:textAlignment="textStart"
             android:textColor="@color/design_default_color_background"
             android:textSize="20dp"
@@ -184,8 +173,7 @@
             app:layout_constraintHorizontal_bias="0.26"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
-            app:layout_constraintVertical_bias="0.110000014"
-            app:srcCompat="@drawable/ic_wi_time_2" />
+            app:layout_constraintVertical_bias="0.110000014" />
 
         <TextView
             android:id="@+id/textViewTime"
@@ -193,7 +181,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="17:25 16.03.2020"
             android:textAlignment="textStart"
             android:textColor="@color/design_default_color_background"
             android:textSize="20dp"

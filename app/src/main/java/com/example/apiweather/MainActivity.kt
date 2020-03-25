@@ -8,6 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.internal.format
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -22,10 +23,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        imageViewThermometer.setImageResource(R.drawable.ic_wi_thermometer)
-        imageViewDegrees.setImageResource(R.drawable.ic_wi_degrees)
-        imageViewBarometer.setImageResource(R.drawable.ic_wi_barometer)
 
         citySearch.setOnClickListener {
             if (inputCity.text.toString().isNotEmpty()){
@@ -47,20 +44,30 @@ class MainActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { result ->
-                val data = changeDate(
+                var data = changeDate(
                     (result.dt.toLong() + result.timezone.toLong()) * 1000L
                 )
-                val time = changeTime(
+                var time = changeTime(
                     (result.dt.toLong() + result.timezone.toLong()) * 1000L
                 )
-                val sunriseTime =
+                var temp:Float = result.main.temp.toFloat()
+                var sunriseTime =
                     changeTime((result.sys.sunrise.toLong() + result.timezone.toLong()) * 1000L)
                     textViewSunrise.text = sunriseTime
-                val sunsetTime =
+                var sunsetTime =
                     changeTime((result.sys.sunset.toLong() + result.timezone.toLong()) * 1000L)
                     textViewSunset.text = sunsetTime
                 if (result.cod == "200") {
-                    textViewThemperature.text = result.main.temp
+
+                    imageViewThermometer.setImageResource(R.drawable.ic_wi_thermometer)
+                    imageViewDegrees.setImageResource(R.drawable.ic_wi_degrees)
+                    imageViewBarometer.setImageResource(R.drawable.ic_wi_barometer)
+                    imageViewTime2.setImageResource(R.drawable.ic_wi_time_2)
+                    imageViewSunrise.setImageResource(R.drawable.ic_wi_sunrise)
+                    imageViewSunset.setImageResource(R.drawable.ic_wi_sunset)
+
+
+                    textViewThemperature.text = "%.1f".format(temp)
                     textViewBarometer.text = "${result.main.pressure} hPa"
                     textViewDescription.text = result.weather[0].description
                     textViewTime.text = time + data
@@ -95,4 +102,6 @@ class MainActivity : AppCompatActivity() {
         )
         return time
     }
+
+    fun Double.format(digits: Int) = "%.${digits}f".format(this)
 }
