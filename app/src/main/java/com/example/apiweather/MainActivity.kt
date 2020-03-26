@@ -73,7 +73,9 @@ class MainActivity : AppCompatActivity() {
                         result.weather[0].main == "Snow" -> iconView.setImageResource(R.drawable.ic_wi_snow)
                         result.weather[0].main == "Windy" -> iconView.setImageResource(R.drawable.ic_wi_windy)
                         result.weather[0].main == "Rain" -> iconView.setImageResource(R.drawable.ic_wi_day_rain)
+                        result.weather[0].main == "Drizzle" -> iconView.setImageResource(R.drawable.ic_wi_day_rain)
                         result.weather[0].main == "Clouds" -> iconView.setImageResource(R.drawable.ic_wi_cloud)
+                        result.weather[0].main == "Thunderstorm" -> iconView.setImageResource(R.drawable.ic_wi_day_thunderstorm)
                     }
                 }
             }
